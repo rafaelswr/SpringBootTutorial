@@ -15,9 +15,15 @@ import java.util.List;
 @RequestMapping("/student")
 public class StudentController {
 
+    private final StudentService studentService;
+
+    public StudentController(StudentService studentService){
+        this.studentService = studentService;
+    }
+
     @GetMapping("/list")
     public ResponseEntity<List<Student>> getStudents(){
-        return new ResponseEntity<>(List.of(new Student()), HttpStatus.OK);
+        return new ResponseEntity<>(studentService.getStudents(), HttpStatus.OK);
     }
 
 
