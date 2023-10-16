@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentService {
@@ -32,4 +33,14 @@ public class StudentService {
             studentRepository.save(student);
         }
     }
+
+    public void deleteStudent(Long studentID){
+        Optional<Student> s = studentRepository.findById(studentID);
+        if(s.isPresent()){
+            studentRepository.deleteById(studentID);
+        }else{
+            throw new IllegalStateException("user not found");
+        }
+    }
+
 }

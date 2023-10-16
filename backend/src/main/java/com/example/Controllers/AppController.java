@@ -14,10 +14,14 @@ import java.util.List;
 @RequestMapping("/")
 public class AppController {
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<String> greetings() {
         return new ResponseEntity<>("Ola", HttpStatus.OK);
     }
 
+    @GetMapping("/error")
+    public ResponseEntity<String> error(){
+        return new ResponseEntity<>("Error", HttpStatus.OK);
+    }
 
 }
