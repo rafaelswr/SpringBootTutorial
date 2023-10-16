@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/student")
@@ -35,6 +36,15 @@ public class StudentController {
         studentService.deleteStudent(studentID);
     }
 
+    @GetMapping("/list/{studentId}")
+    public ResponseEntity<Optional<Student>> studentById(@PathVariable Long studentId){
+        return new ResponseEntity<>(studentService.getStudentById(studentId),HttpStatus.OK);
+    }
+
+    @PutMapping("/list/{studentId}")
+    public void updateStudent(@PathVariable Long studentId, @RequestBody Student studentUpdated){
+        studentService.updateStudent(studentId, studentUpdated);
+    }
 
 
 

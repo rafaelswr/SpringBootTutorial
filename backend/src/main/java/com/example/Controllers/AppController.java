@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("")
 public class AppController {
 
-    @GetMapping("")
+    @GetMapping("/")
     public ResponseEntity<String> greetings() {
         return new ResponseEntity<>("Ola", HttpStatus.OK);
     }
